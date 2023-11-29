@@ -12,6 +12,8 @@ RUN apt-get update -y \
 
 # Install the bakerydemo project's dependencies into the image.
 COPY ./bakerydemo/requirements/* /code/requirements/
+RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+RUN pip config set install.trusted-host pypi.tuna.tsinghua.edu.cn
 RUN pip install --upgrade pip \
     && pip install -r /code/requirements/production.txt
 
